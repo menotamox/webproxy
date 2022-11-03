@@ -22,7 +22,7 @@ jobs:
           git clone https://github.com/FogNetwork/Tsunami && cd Tsunami && npm install
     - name: running host
       run: |
-         npm start > /dev/null &
+         cd Tsunami && npm start > /dev/null &
     - name: url
       run: |
         npx localtunnel --port 8080
