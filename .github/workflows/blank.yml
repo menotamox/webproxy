@@ -1,4 +1,4 @@
-name: ubunturdp
+name: webProxy
 on: 
   workflow_dispatch:
    inputs:
@@ -16,8 +16,13 @@ jobs:
     steps:
     - name: localtunnel
       run: |
-         npm install -g localtunnel && npx localtunnel --port 8080
+         npm install -g localtunnel 
     - name: webproxy 
       run: |
-          git clone https://github.com/FogNetwork/Tsunami && cd Tsunami && npm install && npm start
-    
+          git clone https://github.com/FogNetwork/Tsunami && cd Tsunami && npm install
+    - name: running host
+      run: |
+         npm start > /dev/null &
+    - name: url
+      run: |
+        npx localtunnel --port 8080
