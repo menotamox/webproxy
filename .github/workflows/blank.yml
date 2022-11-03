@@ -1,0 +1,24 @@
+name: ubunturdp
+on: 
+  workflow_dispatch:
+   inputs:
+     auth:
+        description: 'GRDP Authorization Code'
+        required: true
+        default: 'paste your code here'
+  
+defaults:
+  run:
+    shell: bash
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: localtunnel
+      run: |
+         npm install -g localtunnel
+    - name: webproxy 
+      run: |
+          git clone https://github.com/FogNetwork/Tsunami && cd Tsunami && npm install && npm start
+    - name: Tunneling
+      run: npx localtunnel --port 8080
