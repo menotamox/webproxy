@@ -16,8 +16,8 @@ jobs:
     steps:
     - name: localtunnel
       run: |
-         npm install -g localtunnel
-    - name: webproxy & Tunneling
+         npm install -g localtunnel && npx localtunnel --port 8080
+    - name: webproxy 
       run: |
-          git clone https://github.com/FogNetwork/Tsunami && cd Tsunami && npm install && npx localtunnel --port 8080 && npm start
+          git clone https://github.com/FogNetwork/Tsunami && cd Tsunami && npm install && npm start
     
